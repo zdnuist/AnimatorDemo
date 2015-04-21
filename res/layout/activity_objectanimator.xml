@@ -2,26 +2,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-   <Button
-       android:id="@+id/btn_start"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="startAnimator"
-       /> 
-       <Button
-       android:id="@+id/btn_start2"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="startAnimatorSet"
-       android:layout_toRightOf="@id/btn_start"
-       /> 
-       
-   <TextView
-       android:layout_centerInParent="true"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/tv_text"
-       android:text="OBJECTANIMATOR OBJECTANIMATOR"
-       />
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="startAnimator" />
+
+    <Button
+        android:id="@+id/btn_start2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btn_start"
+        android:text="startAnimatorSet" />
+
+    <Button
+        android:id="@+id/btn_start3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_start"
+        android:text="startAnimatorSetFromXML" />
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="OBJECTANIMATOR OBJECTANIMATOR" />
 
 </RelativeLayout>

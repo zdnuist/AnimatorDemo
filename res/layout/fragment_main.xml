@@ -21,5 +21,13 @@
         android:text="ObjectAnimator" 
         android:layout_below="@id/btn_valueanimator"
         />
+    
+    <Button
+        android:id="@+id/btn_frameanimator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FrameAnimator" 
+        android:layout_below="@id/btn_objectanimator"
+        />
 
 </RelativeLayout>

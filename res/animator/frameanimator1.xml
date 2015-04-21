@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false" >
+
+    <item
+        android:drawable="@drawable/reco_parse_01"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/reco_parse_02"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/reco_parse_03"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/reco_parse_04"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/reco_parse_05"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/reco_parse_06"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/reco_parse_07"
+        android:duration="150"/>
+    <item
+        android:drawable="@drawable/reco_parse_08"
+        android:duration="150"/>
+
+</animation-list>

@@ -1,5 +1,5 @@
 # AnimatorDemo
-学习android属性动画
+学习android属性动画、帧动画
 
-Blog推荐:
+#Blog推荐
 http://blog.csdn.net/guolin_blog/article/details/43536355?utm_source=www.race604.com

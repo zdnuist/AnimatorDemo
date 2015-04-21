@@ -2,6 +2,7 @@ package me.zdnuist.animator;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
@@ -16,7 +17,7 @@ public class ObjectAnimatorActivity extends Activity implements OnClickListener 
 	
 	public static  final String TAG = "ObjectAnimatorActivity";
 
-	Button start, start2;
+	Button start, start2,start3;
 	TextView text;
 
 	@Override
@@ -29,6 +30,9 @@ public class ObjectAnimatorActivity extends Activity implements OnClickListener 
 
 		start2 = (Button) findViewById(R.id.btn_start2);
 		start2.setOnClickListener(this);
+		
+		start3 = (Button) findViewById(R.id.btn_start3);
+		start3.setOnClickListener(this);
 
 		text = (TextView) findViewById(R.id.tv_text);
 
@@ -97,8 +101,19 @@ public class ObjectAnimatorActivity extends Activity implements OnClickListener 
 			animSet.setDuration(10*1000);
 			animSet.start();
 			break;
+		case R.id.btn_start3:
+			Animator animator = AnimatorInflater.loadAnimator(this, R.animator.animator1);
+			animator.setTarget(text);
+			animator.start();
+			break;
 		}
 
 	}
+	
+	
+	/*使用XML编写动画
+	<animator>  对应代码中的ValueAnimator
+	<objectAnimator>  对应代码中的ObjectAnimator
+	<set>  对应代码中的AnimatorSet*/
 
 }

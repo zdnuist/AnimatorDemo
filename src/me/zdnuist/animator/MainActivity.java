@@ -65,6 +65,8 @@ public class MainActivity extends ActionBarActivity {
 					this);
 			rootView.findViewById(R.id.btn_objectanimator).setOnClickListener(
 					this);
+			rootView.findViewById(R.id.btn_frameanimator).setOnClickListener(
+					this);
 			return rootView;
 		}
 
@@ -78,6 +80,10 @@ public class MainActivity extends ActionBarActivity {
 				break;
 			case R.id.btn_objectanimator:
 				intent = new Intent(getActivity(), ObjectAnimatorActivity.class);
+				getActivity().startActivity(intent);
+				break;
+			case R.id.btn_frameanimator:
+				intent = new Intent(getActivity(),FrameAnimatorActivity.class);
 				getActivity().startActivity(intent);
 				break;
 			}
