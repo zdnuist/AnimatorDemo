@@ -19,6 +19,7 @@ public final class R {
     public static final class animator {
         public static final int animator1=0x7f050000;
         public static final int frameanimator1=0x7f050001;
+        public static final int hotel_loading_anim=0x7f050002;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -980,15 +981,18 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int ic_launcher=0x7f020057;
-        public static final int reco_parse_01=0x7f020058;
-        public static final int reco_parse_02=0x7f020059;
-        public static final int reco_parse_03=0x7f02005a;
-        public static final int reco_parse_04=0x7f02005b;
-        public static final int reco_parse_05=0x7f02005c;
-        public static final int reco_parse_06=0x7f02005d;
-        public static final int reco_parse_07=0x7f02005e;
-        public static final int reco_parse_08=0x7f02005f;
+        public static final int hotel_booking_web_loading_1=0x7f020057;
+        public static final int hotel_booking_web_loading_2=0x7f020058;
+        public static final int hotel_booking_web_loading_3=0x7f020059;
+        public static final int ic_launcher=0x7f02005a;
+        public static final int reco_parse_01=0x7f02005b;
+        public static final int reco_parse_02=0x7f02005c;
+        public static final int reco_parse_03=0x7f02005d;
+        public static final int reco_parse_04=0x7f02005e;
+        public static final int reco_parse_05=0x7f02005f;
+        public static final int reco_parse_06=0x7f020060;
+        public static final int reco_parse_07=0x7f020061;
+        public static final int reco_parse_08=0x7f020062;
     }
     public static final class id {
         public static final int action_bar=0x7f06001c;
@@ -1009,12 +1013,12 @@ containing a value of this type.
         public static final int btn_frameanimator=0x7f060044;
         public static final int btn_objectanimator=0x7f060043;
         public static final int btn_start=0x7f06003c;
-        public static final int btn_start2=0x7f06003e;
+        public static final int btn_start2=0x7f06003d;
         public static final int btn_start3=0x7f06003f;
         public static final int btn_valueanimator=0x7f060042;
         public static final int checkbox=0x7f06002d;
         public static final int collapseActionView=0x7f06000d;
-        public static final int container=0x7f06003d;
+        public static final int container=0x7f06003e;
         public static final int default_activity_button=0x7f060028;
         public static final int dialog=0x7f06000e;
         public static final int disableHome=0x7f060008;
@@ -1116,8 +1120,9 @@ containing a value of this type.
         public static final int activity_objectanimator=0x7f030019;
         public static final int activity_valueanimator=0x7f03001a;
         public static final int fragment_frameanim=0x7f03001b;
-        public static final int fragment_main=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int fragment_hotelloading=0x7f03001c;
+        public static final int fragment_main=0x7f03001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;

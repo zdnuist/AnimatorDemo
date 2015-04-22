@@ -6,10 +6,13 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -19,6 +22,8 @@ public class ObjectAnimatorActivity extends Activity implements OnClickListener 
 
 	Button start, start2,start3;
 	TextView text;
+	
+	int width;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +40,13 @@ public class ObjectAnimatorActivity extends Activity implements OnClickListener 
 		start3.setOnClickListener(this);
 
 		text = (TextView) findViewById(R.id.tv_text);
-
+		
+		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+		DisplayMetrics dm = new DisplayMetrics();
+		wm.getDefaultDisplay().getMetrics(dm);
+		
+		width = dm.widthPixels;
+		text.setAlpha(0f);
 	}
 
 	@Override
@@ -59,13 +70,14 @@ public class ObjectAnimatorActivity extends Activity implements OnClickListener 
 			anim.start();
 			break;
 		case R.id.btn_start2:
+			text.setAlpha(1f);
 			/*after(Animator anim)   将现有动画插入到传入的动画之后执行
 			after(long delay)   将现有动画延迟指定毫秒后执行
 			before(Animator anim)   将现有动画插入到传入的动画之前执行
 			with(Animator anim)   将现有动画和传入的动画同时执行*/
 			// 让TextView先从屏幕外移动进屏幕，然后开始旋转360度，旋转的同时进行淡入淡出操作
 			ObjectAnimator moveIn = ObjectAnimator.ofFloat(text,
-					"translationX", -600f, 0f);
+					"translationX", width + 600f, 0f);
 			ObjectAnimator rotate = ObjectAnimator.ofFloat(text, "rotation",
 					0f, 360f);
 			ObjectAnimator fadeInOut = ObjectAnimator.ofFloat(text, "alpha",
@@ -98,7 +110,7 @@ public class ObjectAnimatorActivity extends Activity implements OnClickListener 
 				
 			});
 			
-			animSet.setDuration(10*1000);
+			animSet.setDuration(4*1000);
 			animSet.start();
 			break;
 		case R.id.btn_start3:

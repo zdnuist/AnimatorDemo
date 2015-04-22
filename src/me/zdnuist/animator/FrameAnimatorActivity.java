@@ -1,6 +1,7 @@
 package me.zdnuist.animator;
 
 import me.zdnuist.animator.fragment.FrameAnimFragment;
+import me.zdnuist.animator.fragment.HotelLoadingFragment;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +15,7 @@ import android.widget.Button;
  */
 public class FrameAnimatorActivity extends Activity implements OnClickListener{
 	
-	Button start;
+	Button start,start2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,9 @@ public class FrameAnimatorActivity extends Activity implements OnClickListener{
 		
 		start = (Button) findViewById(R.id.btn_start);
 		start.setOnClickListener(this);
+		
+		start2 = (Button) findViewById(R.id.btn_start2);
+		start2.setOnClickListener(this);
 	}
 
 	@Override
@@ -33,6 +37,10 @@ public class FrameAnimatorActivity extends Activity implements OnClickListener{
 		case R.id.btn_start:
 			FrameAnimFragment fragment = new FrameAnimFragment();
 			fragment.show(getFragmentManager(), "frameFragment");
+			break;
+		case R.id.btn_start2:
+			HotelLoadingFragment fragment2 = new HotelLoadingFragment();
+			fragment2.show(getFragmentManager(), "hotelLoading");
 			break;
 		}
 	}
