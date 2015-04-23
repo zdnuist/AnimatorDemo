@@ -32,5 +32,5 @@
             android:name="me.zdnuist.animator.FrameAnimatorActivity"
             />
     </application>
-
+    
 </manifest>

@@ -8,6 +8,7 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -17,36 +18,45 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class ObjectAnimatorActivity extends Activity implements OnClickListener {
-	
-	public static  final String TAG = "ObjectAnimatorActivity";
 
-	Button start, start2,start3;
+	public static final String TAG = "ObjectAnimatorActivity";
+
+	Button start, start2, start3,start4;
 	TextView text;
-	
+
 	int width;
+
+	Context mContext;
+	WindowManager wm;
+	
+	/**
+	 * android.view.WindowManager.LayoutParams#FLAG_DISMISS_KEYGUARD
+	 */
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_objectanimator);
+		mContext = this;
 
 		start = (Button) findViewById(R.id.btn_start);
 		start.setOnClickListener(this);
 
 		start2 = (Button) findViewById(R.id.btn_start2);
 		start2.setOnClickListener(this);
-		
+
 		start3 = (Button) findViewById(R.id.btn_start3);
 		start3.setOnClickListener(this);
 
 		text = (TextView) findViewById(R.id.tv_text);
-		
-		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+
+		wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 		DisplayMetrics dm = new DisplayMetrics();
 		wm.getDefaultDisplay().getMetrics(dm);
-		
+
 		width = dm.widthPixels;
 		text.setAlpha(0f);
+		
 	}
 
 	@Override
@@ -71,10 +81,11 @@ public class ObjectAnimatorActivity extends Activity implements OnClickListener 
 			break;
 		case R.id.btn_start2:
 			text.setAlpha(1f);
-			/*after(Animator anim)   将现有动画插入到传入的动画之后执行
-			after(long delay)   将现有动画延迟指定毫秒后执行
-			before(Animator anim)   将现有动画插入到传入的动画之前执行
-			with(Animator anim)   将现有动画和传入的动画同时执行*/
+			/*
+			 * after(Animator anim) 将现有动画插入到传入的动画之后执行 after(long delay)
+			 * 将现有动画延迟指定毫秒后执行 before(Animator anim) 将现有动画插入到传入的动画之前执行
+			 * with(Animator anim) 将现有动画和传入的动画同时执行
+			 */
 			// 让TextView先从屏幕外移动进屏幕，然后开始旋转360度，旋转的同时进行淡入淡出操作
 			ObjectAnimator moveIn = ObjectAnimator.ofFloat(text,
 					"translationX", width + 600f, 0f);
@@ -84,9 +95,9 @@ public class ObjectAnimatorActivity extends Activity implements OnClickListener 
 					1f, 0f, 1f);
 			AnimatorSet animSet = new AnimatorSet();
 			animSet.play(rotate).with(fadeInOut).after(moveIn);
-			
-			//添加监听器
-			moveIn.addListener(new AnimatorListener(){
+
+			// 添加监听器
+			moveIn.addListener(new AnimatorListener() {
 
 				@Override
 				public void onAnimationStart(Animator animation) {
@@ -107,25 +118,25 @@ public class ObjectAnimatorActivity extends Activity implements OnClickListener 
 				public void onAnimationRepeat(Animator animation) {
 					Log.d(TAG, "onAnimationRepeat");
 				}
-				
+
 			});
-			
-			animSet.setDuration(4*1000);
+
+			animSet.setDuration(4 * 1000);
 			animSet.start();
 			break;
 		case R.id.btn_start3:
-			Animator animator = AnimatorInflater.loadAnimator(this, R.animator.animator1);
+			Animator animator = AnimatorInflater.loadAnimator(this,
+					R.animator.animator1);
 			animator.setTarget(text);
 			animator.start();
 			break;
 		}
 
 	}
-	
-	
-	/*使用XML编写动画
-	<animator>  对应代码中的ValueAnimator
-	<objectAnimator>  对应代码中的ObjectAnimator
-	<set>  对应代码中的AnimatorSet*/
+
+	/*
+	 * 使用XML编写动画 <animator> 对应代码中的ValueAnimator <objectAnimator>
+	 * 对应代码中的ObjectAnimator <set> 对应代码中的AnimatorSet
+	 */
 
 }
