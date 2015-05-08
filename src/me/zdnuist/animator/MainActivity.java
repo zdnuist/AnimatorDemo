@@ -67,6 +67,8 @@ public class MainActivity extends ActionBarActivity {
 					this);
 			rootView.findViewById(R.id.btn_frameanimator).setOnClickListener(
 					this);
+			rootView.findViewById(R.id.btn_ucdownloadanimator).setOnClickListener(
+					this);
 			return rootView;
 		}
 
@@ -84,6 +86,10 @@ public class MainActivity extends ActionBarActivity {
 				break;
 			case R.id.btn_frameanimator:
 				intent = new Intent(getActivity(),FrameAnimatorActivity.class);
+				getActivity().startActivity(intent);
+				break;
+			case R.id.btn_ucdownloadanimator:
+				intent = new Intent(getActivity(),UcDownloadAnimatorActivity.class);
 				getActivity().startActivity(intent);
 				break;
 			}

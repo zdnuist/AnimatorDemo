@@ -29,5 +29,12 @@
         android:text="FrameAnimator" 
         android:layout_below="@id/btn_objectanimator"
         />
+    <Button
+        android:id="@+id/btn_ucdownloadanimator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UcdownloadAnimator" 
+        android:layout_below="@id/btn_frameanimator"
+        />
 
 </RelativeLayout>

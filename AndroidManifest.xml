@@ -31,6 +31,11 @@
         <activity
             android:name="me.zdnuist.animator.FrameAnimatorActivity"
             />
+        <activity
+            android:name="me.zdnuist.animator.UcDownloadAnimatorActivity"
+            />
     </application>
     
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest>
