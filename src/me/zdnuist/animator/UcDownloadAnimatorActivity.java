@@ -102,7 +102,12 @@ public class UcDownloadAnimatorActivity extends Activity implements
 				.setLargeIcon(
 						BitmapFactory.decodeResource(getResources(),
 								R.drawable.ic_launcher)).setContentIntent(null)
-				.setProgress(100, progress, false).setOngoing(true);
+				.setProgress(100, progress, false).setOngoing(true)
+				.setContentInfo("已下载"+ progress + "%")
+				.setContentText("TEXT")
+				.setContentTitle("TITLE")
+				;
+		
 
 		notification = mBuilder.build();
 		notificationManager.notify(NOTIFYCATION_ID, notification);
