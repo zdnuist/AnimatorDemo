@@ -28,7 +28,7 @@ import android.widget.Button;
 
 public class UcDownloadAnimatorActivity extends Activity implements
 		OnClickListener {
-	
+
 	public static final String TAG = "UcDownloadAnimatorActivity";
 
 	public final static int NOTIFYCATION_ID = 0x100001;
@@ -81,20 +81,23 @@ public class UcDownloadAnimatorActivity extends Activity implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_show_notifi:
-//			alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
-//					System.currentTimeMillis(), 200, pendingIntent);
-			
-			new Thread(new DownloadTask("http://121.199.50.162/soft/apk/gaode.apk",this)).start();
+			// alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
+			// System.currentTimeMillis(), 200, pendingIntent);
+
+			new Thread(new DownloadTask(
+					"http://121.199.50.162/soft/apk/gaode.apk", this)).start();
 			break;
 		}
 	}
+
+	Notification.Builder mBuilder;
 
 	private void showNotification(int drawable, int progress) {
 
 		// RemoteViews remoteViews = new RemoteViews(getPackageName(),
 		// R.layout.notification_ucdownload);
-
-		Notification.Builder mBuilder = new Notification.Builder(this);
+		if (mBuilder == null)
+			mBuilder = new Notification.Builder(this);
 		// animDrawable = (AnimationDrawable) getResources().getDrawable(
 		// R.animator.uc_download_notification);
 		mBuilder.setSmallIcon(drawable)
@@ -103,11 +106,8 @@ public class UcDownloadAnimatorActivity extends Activity implements
 						BitmapFactory.decodeResource(getResources(),
 								R.drawable.ic_launcher)).setContentIntent(null)
 				.setProgress(100, progress, false).setOngoing(true)
-				.setContentInfo("已下载"+ progress + "%")
-				.setContentText("TEXT")
-				.setContentTitle("TITLE")
-				;
-		
+				.setContentInfo("已下载" + progress + "%").setContentText("TEXT")
+				.setContentTitle("TITLE");
 
 		notification = mBuilder.build();
 		notificationManager.notify(NOTIFYCATION_ID, notification);
@@ -200,38 +200,42 @@ public class UcDownloadAnimatorActivity extends Activity implements
 				int responseCode = urlConnection.getResponseCode();
 				Log.d(TAG, "response code : " + responseCode);
 				if (responseCode == HttpURLConnection.HTTP_OK) {
-				int totalLength = urlConnection.getContentLength();
-				
-				inputStream = urlConnection.getInputStream();
-				
-				byte[] buffer = new byte[4 * 1024 * 1024];
-				int len = 0;
-				
-				Intent intent = new Intent();
-				intent.setAction(ACTION);
-				
-				makeKSDir();
-				outputStream = new FileOutputStream(IMAGE_SAVE_PATH + File.separator + webUrl.substring(webUrl.lastIndexOf("/")+1)); 
-				int progress = 0;
-				while((len = inputStream.read(buffer))!=-1){
-					outputStream.write(buffer,0,len);
-					progress += len;
-					Log.d(TAG, "progress:" + ((progress*100)/totalLength));
-					intent.putExtra("progress", ((progress*100)/totalLength));
-					context.sendBroadcast(intent);
-					
-					Thread.sleep(300);
-				}
+					int totalLength = urlConnection.getContentLength();
+
+					inputStream = urlConnection.getInputStream();
+
+					byte[] buffer = new byte[4 * 1024 * 1024];
+					int len = 0;
+
+					Intent intent = new Intent();
+					intent.setAction(ACTION);
+
+					makeKSDir();
+					outputStream = new FileOutputStream(IMAGE_SAVE_PATH
+							+ File.separator
+							+ webUrl.substring(webUrl.lastIndexOf("/") + 1));
+					int progress = 0;
+					while ((len = inputStream.read(buffer)) != -1) {
+						outputStream.write(buffer, 0, len);
+						progress += len;
+						Log.d(TAG, "progress:"
+								+ ((progress * 100) / totalLength));
+						intent.putExtra("progress",
+								((progress * 100) / totalLength));
+						context.sendBroadcast(intent);
+
+						Thread.sleep(300);
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				try {
-					if(outputStream!=null)
+					if (outputStream != null)
 						outputStream.close();
-					if(inputStream != null)
+					if (inputStream != null)
 						inputStream.close();
-					if(urlConnection!=null)
+					if (urlConnection != null)
 						urlConnection.disconnect();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
